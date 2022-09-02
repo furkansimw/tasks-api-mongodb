@@ -1,14 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
+
 const notExistRoute = require("./routes/notExistRoute");
 const error = require("./routes/error");
-const taskRoute = require("./routes/taskRoute");
+const taskRoute = require("./routes/routeTasks");
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 
 app.use(express.json());
+app.get("/", (req, res) => res.send("Welcome api !"));
 app.use("/tasks", taskRoute);
 app.use(error);
 app.use(notExistRoute);

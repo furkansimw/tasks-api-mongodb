@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 require("dotenv").config();
 
 const notExistRoute = require("./routes/notExistRoute");
@@ -9,7 +10,7 @@ const taskRoute = require("./routes/routeTasks");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 app.get("/", (req, res) => res.send("Welcome api !"));
 app.use("/tasks", taskRoute);
